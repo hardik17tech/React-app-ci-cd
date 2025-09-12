@@ -1,36 +1,34 @@
-name: CI/CD for react App
+name: CI/CD for React App
 
 on:
-  push: 
+  push:
     branches: [main]
   workflow_dispatch:
 
-permission:
-  content: write
+permissions:
+  contents: write
 
 jobs:
-  build_and _deploy:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: cheout repository
-        uses: actions/cheout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - name: Setup Node.js 
+      - name: Setup Node.js
         uses: actions/setup-node@v3
-        with: 
+        with:
           node-version: 18
 
-      - name: Install dependecies
-        runs: npm Install
+      - name: Install dependencies
+        run: npm install
 
-      - name: Build Project
-        runs: npm run build 
-      
-      - name: Deploy to github pages
-        uses: JamesIves/github-pages-deploy-action@4.1.0
-        with: 
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
           branch: gh-pages
           folder: build
-
-  
