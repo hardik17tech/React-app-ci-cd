@@ -42,4 +42,3 @@ export default function Login() {
     </div>
   );
 }
-\\10.60.12.107\Users\shubham.t\Desktop\Shuhbam
